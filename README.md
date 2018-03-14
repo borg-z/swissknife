@@ -10,7 +10,7 @@ At the moment, several functions are implemented:
  - Finding shortest path between device A and B with ports. The application wors with rings and difficult topologi.
  - Writing trunk vlan to the necessary ports.
  - Writing Access port
- - Supported Raisecom, Dlink switches. Some function supported for cisco routers, ubiquity devices
+ - Supported Raisecom, Dlink switches. Some functions are supported on cisco routers, ubiquity devices
  - Template generator. Based on jinja2 template engine.
 
 ### Youtube demo
