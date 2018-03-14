@@ -1,0 +1,4 @@
+Value MAC (\w+\.\w+\.\w+)
+
+Start
+  ^\s*${MAC}\s+ -> Record

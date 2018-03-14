@@ -1,0 +1,7 @@
+Value INTERFACE (\d+)
+Value ADMINSTATUS (Disabled|Enabled)
+Value INTF_STATE (LinkDown|\w+\/\w+\/\w+)
+
+
+Start
+  ^\s+${INTERFACE}(\(\w+\))?\s+${ADMINSTATUS}\s+\w+\/\w+\s+${INTF_STATE}.* -> Record

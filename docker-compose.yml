@@ -1,0 +1,39 @@
+
+tools:
+  image: tools
+  container_name: tools
+  environment:
+    - VIRTUAL_HOST=swissknife.tools.loc
+    - FLASK_APP=/srv/app/app/__init__.py
+    - LC_ALL=C.UTF-8
+    - LANG=C.UTF-8
+  ports:
+    - 80
+  links:
+    - mongo-prod:mongo-prod
+    - redis:redis
+  volumes:
+    - /var/tftpboot:/var/tftpboot    
+mongo-prod:
+  ports:
+    - 27017
+  image: mongo
+  container_name: mongo-prod
+  volumes:
+    - /var/database/mongo:/data/db
+
+tftp:
+  ports:
+    - 69/udp
+  image: tftp
+  container_name: tftp
+  volumes:
+    - /var/tftpboot:/var/tftpboot
+  ports:
+    - 0.0.0.0:69:69/udp
+redis:
+  ports:
+    - 6379
+  image: redis
+  container_name: redis
+

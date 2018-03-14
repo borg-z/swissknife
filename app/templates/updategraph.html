@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="uk-padding">
+        <p><span class="uk-text-bold">Date was received from site at: </span><span id='siteupdate'>{{ siteupdate }}</span></p>
+        <p><span class="uk-text-bold">Graph was created at: </span><span id='graphupdate'>{{ graphupdate }}</span></p>
+                    <button onclick="graph_update()" class="uk-button uk-button-primary uk-button-large">Update</button>
+                    <hr>
+                    <div class="uk-padding uk-padding-remove-left" id="result"></div>                    
+                </div>
+                
+        {% endblock %}

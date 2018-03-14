@@ -1,0 +1,86 @@
+{% extends "devtemplatesbase.html" %}
+{% block content %}
+
+
+
+        <div class="uk-width-4-5">
+            <div class="uk-background-muted  uk-padding">
+                    <h2 id="create">{{template.name}} <a href="/devtemplates?delete={{template.name}}"><span class="uk-margin-small-right" uk-icon="icon:trash"></span></a></h2>
+                    <p class="uk-article-meta">Here you can view and edit template</p>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                      <ul class=flashes>
+                      {% for message in messages %}
+                        <li>{{ message }}</li>
+                      {% endfor %}
+                      </ul>
+                    {% endif %}
+                  {% endwith %}<div class="uk-width-auto"></div>
+                  {% block body %}{% endblock %}
+                  
+
+                    <form  method="post" action="/devtemplate/{{template.name}}" class="uk-form uk-form-stacked">
+                            <div class="uk-container uk-container-expand">
+                            <div class="uk-panel">
+
+                            <table   class="uk-table-small uk-table-divider">
+                                    <thead>
+                                            <tr>
+                                                <th style="text-align: left !important;">Variable</th>
+                                                <th style="text-align: left !important;">Description</th>
+                                                <th style="text-align: left !important;">Default value</th>
+                                            </tr>
+                                        </thead>
+                                        {% for item in template.variables %}
+                                    <tr id="{{item.name}}">
+                                        <td><code>{{item.name}}</code></td>
+                                        <td  id="description">{{item.description}} <a><span onclick="editvariable('{{item.name}}', 'description')" class="uk-margin-small-right" uk-icon="icon:pencil"></span></a></td>
+                                        <td id="value">{{item.value}}<a><span onclick="editvariable('{{item.name}}', 'value')"  class="uk-margin-small-right" uk-icon="icon:pencil"></span></a></td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>    
+
+                            <hr>
+                            </div>   
+
+                            <div class="uk-grid uk-grid-collapse uk-margin-small-top" uk-grid>
+
+                            <div class="uk-width-auto">
+                                <label class="uk-form-label" for="form-s-it">Name</label>
+                                <div class="uk-form-controls">
+                                    <input name="name" value="{{template.name}}" placeholder="Name" type="text" >
+                                </div>
+                                
+                                <label class="uk-form-label" for="form-s-ip">Description</label>
+                                <div class="uk-form-controls">
+                                    <textarea name="description" value="{{template.description}}" placeholder="Description"></textarea>
+                                </div>
+                                <button class="uk-button uk-margin-small uk-button-primary uk-button-medium" type="submit">Edit</button>
+                            </div>
+                            <div  class=" uk-margin-small-left  uk-margin-small-right uk-width-expand">
+                                <label class="uk-form-label" for="form-s-t">Template</label>
+                                <div class="uk-form-controls">
+                                <textarea name="template" class="uk-panel  uk-height-max-large ">{{template.template}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                    </div>
+                    </div>
+                    <script>autosize($('textarea'));</script>
+                    <style>
+                        textarea{  
+                          overflow-y: scroll;
+                          width: 100%;
+                          font-size:14px;
+                          display:block;
+                          resize: vertical;
+                        }
+                        </style>
+                        
+
+
+{% endblock %}

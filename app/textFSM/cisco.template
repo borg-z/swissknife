@@ -1,0 +1,7 @@
+Value VLAN_ID (\d+)
+Value PORTS_TRUNK ((((\w+|-|,)+))(\s*((\w+|-|,)+)))
+
+Start
+  ^\s+${VLAN_ID}(\s+\w+){3}\s+${PORTS_TRUNK}.+ -> Record
+
+

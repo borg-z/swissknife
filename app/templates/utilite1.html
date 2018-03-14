@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="uk-container uk-container-expand">
+<div class="uk-grid uk-margin-small-top" uk-grid>
+        <div class="uk-width-expand">
+                <textarea id='vlans'></textarea>
+            </div>
+        <div class="uk-width-auto">   
+                <input class="uk-button uk-button-primary"  type="button" onclick="convert()" value="Convert"/>        </div>
+
+
+
+<script>autosize($('textarea'));
+
+function convert(){
+    vlans = $('#vlans').val().split(/[\s,]+/);
+    $('#vlans').val('')
+    $('#vlans').val(JSON.stringify(vlans))
+
+}
+
+
+
+</script>
+<style>
+    textarea{  
+      overflow-y: scroll;
+      width: 100%;
+      font-size:14px;
+      display:block;
+      resize: vertical;
+    }
+    </style>
+
+{% endblock %}

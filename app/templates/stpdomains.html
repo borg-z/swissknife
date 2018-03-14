@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="uk-padding">
+
+<div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
+
+<div id="list">
+ 
+<h1 class="uk-heading-line">List of domains</h1>
+
+
+<ul id="ullist">
+    {% for i,j in domainslist.items() %}
+    <li id={{i}}>
+        <span>{{i}}</span>> <span onclick="editstpdomain('{{i}}')" uk-icon="icon: pencil"></span><span onclick="deletestpdomain('{{i}}')" uk-icon="icon: trash"></span>
+        <ul class="devlist">
+            {% for x in j %}
+            <li>{{x}}</li>
+            {% endfor %}
+        </ul>
+         
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+
+
+
+
+<div id="create">
+<h1 class="uk-heading-line">Create new</h1>    
+<select id="createstp" class="multipledevselect" multiple="multiple"></select>
+<button onclick="createstpdomain(createstp)" class="scroll uk-button uk-button-primary">Create stp domain</button>
+</div>
+
+</div>
+</div>
+
+<script>
+
+multipledevselect()
+
+</script>
+
+{% endblock %}

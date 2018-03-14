@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="../static/css/uikit.min.css"/>
+        <link rel="stylesheet" href="../static/css/uikit-rtl.min.css"/>
+        <link rel="stylesheet" href="../static/css/select2.min.css"/>
+        <link rel="stylesheet" href="../static/css/custom.css"/>
+        <script src="../static/js/jquery.scrollTo.min.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/select2.min.js"></script>
+        <script src="../static/js/uikit.min.js"></script>
+        <script src="../static/js/custom.js"></script>
+        <script src="../static/js/uikit-icons.min.js"></script>
+        <script src="../static/js/autosize.js"></script>
+
+        
+    </head>
+    <body>
+
+        <nav class="uk-navbar-container" uk-navbar="uk-navbar">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active">
+                    <a href="/">Home</a>
+                    </li>                      
+                    <li>
+                        <a href="/paths">Paths</a>
+                        <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-active"><a href="/paths">Paths</a></li>
+                                    <li><a href="/access">Access</a></li>
+                                    <li><a href="/stpdomains">STP domains</a></li>
+                                </ul>
+                            </div>                       
+                    </li>
+                    <li>
+                        <a href="/exterminatus">destroyer</a>
+                    </li>     
+                    <li>
+                        <a href="#">System</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="/updategraph">Update Graph</a></li>
+                            </ul>
+                        </div>               
+                    </li>
+                    <li>
+                        <a href="/devtemplates">Templates</a>
+                    </li>                    
+                    <li>
+                            <a href=#>Utilites</a>
+                            <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="/utilite1">LIST FROM VLAN TREE</a></li>
+                                    </ul>
+                                </div>             
+                    </li>                    
+                </ul>
+        </nav>
+ 
+
+        <div class="uk-container uk-container-expand">
+        <div class="uk-grid uk-margin-small-top" uk-grid>
+                <div class="uk-width-auto">
+                    <div class="  uk-background-muted  uk-margin-medium-top uk-card uk-card-default uk-card-body">
+                            <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                                    <li class="uk-parent">
+                                        <a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Templates</a>
+                                        <ul class="uk-nav-sub">
+                                            {% if templatelist|length != 0 %}
+                                            {% for t in templatelist %}
+                                            <li><a href="/devtemplate/{{t.name}}"><span class="uk-margin-small-right" uk-icon="icon:chevron-right"></span>{{t.name}}</a></li>
+                                            {%endfor%}
+                                            {%endif%}
+                                            <li><a href="/devtemplate/new"><span class="uk-margin-small-right" uk-icon="icon:plus"></span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="uk-nav-divider"></li>
+                                    <ul class="uk-nav-sub">
+                                        <li><a href="/devtemplategen">Generate</a></li>
+                                    </ul>
+
+
+                                </ul>
+                    </div>
+                </div>
+                <div class="uk-width-expand">
+                    <div class="uk-background-muted">
+                            {% block content %}{% endblock %}
+                            </div>
+        
+           </div>
+        </div>
+
+    </body>
+</html>
+
+
+
+

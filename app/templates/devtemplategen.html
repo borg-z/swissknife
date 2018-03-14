@@ -1,0 +1,85 @@
+{% extends "devtemplatesbase.html" %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div>
+    <div class="uk-card  uk-card-hover uk-card-primary uk-card-body">
+          <ul class=uk-list>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+
+    </div>
+</div>
+{% endif %}
+{% endwith %}
+
+{% if filename is defined %}
+<div class="uk-width-4-5">
+    <div class="uk-background-muted  uk-padding">
+            <h2 id="output">Output</h2>
+            <p class="uk-text-lead">Filename: {{filename}}</p>
+
+            <div class="uk-grid uk-grid-collapse" uk-grid>
+            <form  method="get" action="/devtemplategen" class="uk-form uk-form-stacked">
+            <input  id="filename" type="hidden" name="save" value={{filename}}>
+            <button class="uk-button uk-margin-small uk-button-primary uk-button-medium" type="submit">Save</button>
+            </form> 
+            <form  method="get" action="/devtemplategen" class="uk-form uk-form-stacked">
+            <input id="filename" type="hidden" name="tftp" value={{filename}}>
+            <button class="uk-button uk-margin-small uk-button-primary uk-button-medium" type="submit">Copy to tftp</button>
+            </form>
+            <button onclick="$('#sshcopy').show()" class="uk-button uk-margin-small uk-button-primary uk-button-medium" >SCP</button>
+        </div>
+        
+        <div style="display: none" id="sshcopy">
+            <input id="username" value="ubnt" type="text"> 
+            <input id="password" value="ubnt" type="text">
+            <input id="sshpath" value="192.168.1.20:/tmp/system.cfg" type="text">  <button onclick="copyssh()" class="uk-button uk-margin-small uk-button-primary uk-button-small">Copy</button>
+            <span>Username, Password, SSH pass e.g SSH path 192.168.1.20:/tmp/system.cfg</span>
+            <div class="uk-width-large" id="result" style="padding-top: 20px;"></div>
+
+            
+
+        </div>      
+</div>
+</div>
+
+{% else %}
+        <div class="uk-width-4-5">
+            <div class="uk-background-muted  uk-padding">
+                    <h2 id="create">Generate</h2>
+                    <p class="uk-article-meta">Here you can view and edit template</p>
+                  {% block body %}{% endblock %}
+
+                <select id="template" class="sel2">
+                {% for i in templatelist %}
+                <option>{{i.name}}</option>
+                {%endfor%}
+                </select> <input onclick="getvariables()" value="Get variables" class="uk-button uk-button-small uk-button-primary">
+                <form enctype='application/json'  method="post" action="/devtemplategen" class="uk-form uk-form-stacked">
+                <input  type="hidden" name="name" id="selected_tempate">    
+                <table id="templatetable"   class="uk-table-small uk-table-divider">
+                        <thead>
+                                <tr>
+                                    <th style="text-align: left !important;">Variable</th>
+                                    <th style="text-align: left !important;">Description</th>
+                                    <th style="text-align: left !important;">Value</th>
+                                </tr>
+                            </thead>
+                    <tbody>        
+                    </tbody>
+                </table>
+                <button id="render" style="display: none;" class="uk-button uk-margin-small uk-button-primary uk-button-medium" type="submit">Render</button>
+                </form>    
+<script>
+$(".sel2").select2({
+    placeholder: "Select template",
+    width: '200px'
+})
+</script>
+ 
+{% endif %}
+{% endblock %}

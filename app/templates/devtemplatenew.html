@@ -1,0 +1,60 @@
+{% extends "devtemplatesbase.html" %}
+{% block content %}
+
+        <div class="uk-width-4-5">
+            <div class="uk-background-muted  uk-padding">
+                    <h2 id="create">Create new</h2>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div>
+                        <div class="uk-card  uk-card-hover uk-card-primary uk-card-body">
+                              <ul class=flashes>
+                              {% for message in messages %}
+                                <li>{{ message }}</li>
+                              {% endfor %}
+                              </ul>
+                    
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                  {% block body %}{% endblock %}
+                  
+
+                    <form  method="post" action="/devtemplate/new" class="uk-form uk-form-stacked">
+                            <div class="uk-container uk-container-expand">
+                            <div class="uk-grid uk-grid-collapse uk-margin-small-top" uk-grid>
+
+                            <div class="uk-width-auto">
+                                <label class="uk-form-label" for="form-s-it">Name</label>
+                                <div class="uk-form-controls">
+                                    <input name="name" placeholder="Name" type="text">
+                                </div>
+                                
+                                <label class="uk-form-label" for="form-s-ip">Description</label>
+                                <div class="uk-form-controls">
+                                    <input name="description" placeholder="Description" type="text">
+                                </div>
+                                <button class="uk-button uk-margin-small uk-button-primary uk-button-medium" type="submit">Create</button>
+                            </div>
+                            <div  class=" uk-margin-small-left  uk-margin-medium-right uk-width-expand">
+                                <label class="uk-form-label" for="form-s-t">Template</label>
+                                <div class="uk-form-controls">
+                                <textarea name="template" class="uk-panel  uk-height-max-large "></textarea></div>
+                            </div>
+
+
+                    </form>
+                    </div>
+                    </div>
+<script>autosize($('textarea'));</script>
+<style>
+    textarea{  
+        overflow-y: scroll;
+        width: 100%;
+        font-size:14px;
+        display:block;
+        resize: vertical;
+    }
+    </style>
+{% endblock %}

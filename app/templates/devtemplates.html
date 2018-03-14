@@ -1,0 +1,39 @@
+{% extends "devtemplatesbase.html" %}
+{% block content %}
+
+        <div class="uk-width-4-5">
+            <div class="uk-background-muted  uk-padding">
+
+
+                    <h2 id="getstarted">Get Started</h2>
+                    
+                    <p>This tool is designed to generate configs of network devices based on templates. For templating we use Jinja2 template engine. You can find docks  <a href="http://jinja.pocoo.org/docs/2.10/">here</a> and <a href="http://xgu.ru/wiki/Jinja2#.D0.A1.D0.B8.D0.BD.D1.82.D0.B0.D0.BA.D1.81.D0.B8.D1.81_.D1.88.D0.B0.D0.B1.D0.BB.D0.BE.D0.BD.D0.BE.D0.B2">here(rus)</a> </p>
+                        <table   class=" uk-table uk-table-divider">
+                                <thead>
+                                        <tr>
+                                            <th style="text-align: left !important;">Template</th>
+                                            <th style="text-align: left !important;">Description</th>
+                                        </tr>
+                                    </thead>
+                                {% if templatelist|length != 0 %}
+                                {% for t in templatelist %}
+                                <tr>
+                                    <td><a href="/devtemplate/{{t.name}}"><code>{{t.name}}</code></a></td>
+                                    <td>{{t.description}}</td>
+                                </tr>
+
+
+                                {%endfor%}
+                                {%endif%}
+                                <tr>
+                                        <td><a href="/devtemplate/new"><span class="uk-margin-small-right" uk-icon="icon:plus"></span></a></td>
+                                        <td>Create new template</td>
+                                </tr>
+
+                                
+                            </tbody>
+                        </table>
+
+                    </div>
+
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div class="uk-container">
+
+
+        <h2 class="uk-h3">0.1.4
+            <span class="uk-text-muted">(February 8, 2018)</span>
+        </h2>
+
+        <ul class="uk-list">
+            <li>
+                <span
+                    class="uk-label uk-label-danger uk-margin-right uk-text-center uk-width-small tm-width-small">Fixed</span>
+                    Deleting ip address on shv.loc router.</li>
+            <li>
+            <li>
+                    <span
+                        class="uk-label uk-label-danger uk-margin-right uk-text-center uk-width-small tm-width-small">Fixed</span>
+                    Fixed empty and dublicated paths in paths calculation</li>
+            <li>
+                    <li>
+                            <span
+                                class="uk-label uk-label-danger uk-margin-right uk-text-center uk-width-small tm-width-small">Fixed</span>
+                            Raisecom 2624 write fixed</li>
+                    <li>
+
+
+                </ul>
+                    <ul class="uk-list">
+                            <li>
+                                    <span
+                                        class="uk-label uk-label-success uk-margin-right uk-text-center uk-width-small tm-width-small">Added</span>
+                                     Basic authentification with <code>flask login</code> module
+                                    </li>
+                                
+                     
+                    </ul>
+
+
+        
+            
+
+
+
+
+
+            <h2 class="uk-h3">0.1.3
+                    <span class="uk-text-muted">(January 27, 2018)</span>
+                </h2>
+
+                <ul class="uk-list">
+                        <li>
+                            <span
+                                class="uk-label  uk-margin-right uk-text-center uk-width-small tm-width-small">Changed</span>
+                                Now running 10 workers for simultaneous tasks execution</li>
+                    </ul>
+                    
+
+                            <ul class="uk-list">
+                                    <li>
+                                        <span
+                                            class="uk-label uk-label-danger uk-margin-right uk-text-center uk-width-small tm-width-small">Fixed</span>
+                                        Small fix in path calculation algorithm</li>
+                                    <li>
+                                </ul>
+
+
+
+            <h2 class="uk-h3">0.1.2
+                    <span class="uk-text-muted">(January 26, 2018)</span>
+                </h2>
+                <ul class="uk-list">
+                        <li>
+                                <span
+                                    class="uk-label uk-label-success uk-margin-right uk-text-center uk-width-small tm-width-small">Added</span>
+                                 <a href="/stpdomains">STP domains.</a> Now you can manual set device in STP domain.
+                                    It used when you calculate path in 'Paths'. If source or destination contains in domain, used additional paths.
+                                </li>
+                            
+                 
+                </ul>
+
+                <ul class="uk-list">
+                        <li>
+                            <span
+                                class="uk-label uk-label-danger uk-margin-right uk-text-center uk-width-small tm-width-small">Fixed</span>
+                            Problem with defective, oneway links on map ('red link'). Now if graph don't know link between a->b, after 'Prepare' you can see <code>"ports":[0]</code>
+                            In this case vlan create but, don't added to port.
+                        
+                        </li>
+                        <li>
+                    </ul>
+
+
+
+
+
+
+
+            <h2 class="uk-h3">0.1.1
+                    <span class="uk-text-muted">(January 19, 2018)</span>
+                </h2>
+                <ul class="uk-list">
+                        <li>
+                                <span
+                                    class="uk-label uk-label-success uk-margin-right uk-text-center uk-width-small tm-width-small">Added</span>
+                                Autoscroll to next step in <a href="/">Paths</a></li>
+                            <li>
+
+                    <li>
+                        <span
+                            class="uk-label uk-label-success uk-margin-right uk-text-center uk-width-small tm-width-small">Added</span>
+                            Changelog static page</li>
+                    <li>
+                            <li>
+                                    <span
+                                        class="uk-label uk-label-success uk-margin-right uk-text-center uk-width-small tm-width-small">Added</span>
+                                        <a href="/exterminatus">Destroyer</a> just click button to destroy all '192.168.1.1 secondary'</li>
+                                <li>                        
+                            <span
+                                class="uk-label uk-label-success uk-margin-right uk-text-center uk-width-small tm-width-small">Added</span>
+                                Separated dev and production versions. Using <code>docker</code> and <code>docker-compose</code> for deploy.</li>
+                                    
+                </ul>
+
+                <ul class="uk-list">
+                    <li>
+                        <span
+                            class="uk-label  uk-margin-right uk-text-center uk-width-small tm-width-small">Changed</span>
+                            Now all long task runnig in background. Redis queue is using for nonblocking tasks.</li>
+                            <li>
+                                <span
+                                    class="uk-label  uk-margin-right uk-text-center uk-width-small tm-width-small">Changed</span>
+                                    Dynamically task status updating</li>
+                                    <li>
+                                        <span
+                                            class="uk-label  uk-margin-right uk-text-center uk-width-small tm-width-small">Changed</span>
+                                            All tasks are stored in tasks.py </li>                                                                  
+                                            <li>
+                                                <span
+                                                    class="uk-label  uk-margin-right uk-text-center uk-width-small tm-width-small">Changed</span>
+                                                    Added simple description to function</li>     
+                                        </ul>
+
+
+
+
+
+
+        <h2 class="uk-h3">0.1
+            <span class="uk-text-muted">(January 18, 2018)</span>
+        </h2>
+        <ul class="uk-list">
+            <li>
+                <span
+                    class="uk-label uk-label-success uk-margin-right uk-text-center uk-width-small tm-width-small">Added</span>
+                First working prototype</li>
+        </ul>
+        <ul class="uk-list">
+            <li>
+                <span
+                    class="uk-label  uk-margin-right uk-text-center uk-width-small tm-width-small">Changed</span>
+                    nothing</li>
+        </ul>
+        <ul class="uk-list">
+            <li>
+                <span
+                    class="uk-label uk-label-danger uk-margin-right uk-text-center uk-width-small tm-width-small">Fixed</span>
+                nothing</li>
+            <li>
+        </ul>
+    </div>
+{% endblock %}

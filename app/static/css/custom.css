@@ -1,0 +1,42 @@
+.content {
+	margin-top: 50px;
+}
+
+
+.inline-block {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    margin: 1em;
+  }
+
+.after-inline {
+  clear: left;
+  margin-left: 73%;
+}
+
+
+#stage2 {
+    display: none;
+}
+
+#stage1 {
+    display: none;
+}
+
+#stage3 {
+    display: none;
+}
+
+#stage4 {
+    display: none;
+}
+
+
+#result {
+    display: none;
+}
+
+#check {
+    display: none;
+}

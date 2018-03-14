@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="uk-padding-small">
+
+        <div id="stage0" class='content'>
+            <h1>Stage 0</h1>
+            <h3>Create graph</h3>
+            <p uk-margin="uk-margin">
+                <button
+                    id="create"
+                    ,=","
+                    onclick="create()"
+                    class="uk-button uk-button-primary uk-button-large">Load Graph</button>
+            </p>
+            <p>Please click this button. This button help homeless cats and would load graph from database</p>  
+        </div>
+
+        <div id="stage1">
+
+            <h1>Stage 1</h1>
+            <h3>Select source and destination ip. Form has autocompletion function.</h3>
+            <p>For The Emperor! You must enter source and destination ip of device. Paths would created from source to  destination</p>  
+
+            <form>
+                            
+                            <div>
+                            
+                            <span>
+                                    
+                                    {{ form.src(class_="form-control placeholder-src"  ) }}
+                    
+                                    {% for error in form.src.errors %}
+                                        <span class="label label-danger">{{ error }}</span>
+                                    {% endfor %}
+                            </span>
+                
+                            <span>
+                    
+                                    {{ form.dst(class_="form-control placeholder-dst", ) }}
+                    
+                                    {% for error in form.dst.errors %}
+                                        <span class="label label-danger">{{ error }}</span>
+                                    {% endfor %}
+                            </span>
+                            </div>
+
+                            <div style="padding-top: 10px;">
+                              
+                            <input
+                            id="calculate"
+                            class="uk-button uk-button-primary uk-button-large"
+                            type="button"
+                            onclick="calc()"
+                            value="Calculate"/>                        
+                        </div>
+                    </form>
+                        </div>
+
+                
+
+
+        <div class="uk-width-large" id="stage2">
+            <h1>Stage 2</h1>
+            <div class="paths uk-panel uk-panel-scrollable uk-height-large"></div>
+        </div>
+        
+        <div class="uk-width-large" id="stage3">
+            <h1>Stage 3</h1>
+            <p>This button prepare selected list to writing. New list with ports would create. Excluding unsupported devices.</p>
+            <input
+                id="prepare"
+                class="uk-button uk-button-primary uk-button-large"
+                type="button"
+                onclick="withports()"
+                value="Prepare"/>
+            <ul class="uk-list uk-list-striped preplist"></ul>
+        </div>
+
+        <div class="uk-width-large" id="stage4">
+            <h1>Stage 4</h1>
+            <p>Enter vlanid and click big button! I hope you know what you're doing.</p>
+            <div class="uk-margin">
+               
+            </div>
+
+            <div class="uk-margin" uk-margin="uk-margin">
+                <div uk-form-custom="target: true">
+                    <input
+                        id="vlan"
+                        class="uk-input uk-form-width-medium"
+                        type="text"
+                        placeholder="vlan_id">
+                </div>
+                <button
+                    class="uk-button uk-button-primary uk-button-large"
+                    onclick="write_func()">Write</button>
+            </div>
+        </div>
+
+        <div class="uk-width-large" id="result" style="padding-top: 20px;">
+            <h1>Result</h1>
+
+            <ul class="uk-list uk-list-striped resultlist">
+                <li>
+                        <div uk-spinner></div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="uk-width-large" id="check" style="padding-top: 20px;">
+                <h1>Check</h1>
+                <input id="vlan2" class="uk-input uk-form-width-medium" type="text" placeholder="vlan_id">
+                <input id="cisco" class="uk-input uk-form-width-medium" type="text" placeholder="cisco">
+                <button id="checkbutton" class="uk-button uk-button-primary uk-button-large" onclick="checktrunk()">Check</button>                
+                <ul class="uk-list uk-list-striped resultlist2">
+                </ul>
+        </div>
+
+
+        </div>
+                    <script type="text/javascript">
+
+                        $(".placeholder-src").select2({
+                            width: '200px',
+                            placeholder: "...",
+                            maximumSelectionSize: 12,
+                            minimumInputLength: 3,
+                            ajax: {
+                                url: '/dev_uri',
+                                processResults: function (data) {
+                                    // Tranforms the top-level key of the response object from 'items' to 'results'
+                                    return {results: data};
+                                },
+                                cache: true
+                            }
+                        });
+
+
+                        $(".placeholder-dst").select2({
+                            width: '200px',
+                            placeholder: "...",
+                            maximumSelectionSize: 12,
+                            minimumInputLength: 3,                            
+                            ajax: {
+                                url: '/dev_uri',
+                                processResults: function (data) {
+                                    // Tranforms the top-level key of the response object from 'items' to 'results'
+                                    return {results: data};
+                                },
+                                cache: true
+                            }
+                        });
+                        
+                    </script>
+
+                {% endblock %}

@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="uk-padding">
+<div>
+<!-- <p class="uk-text-meta">Supported:</p>    
+    <p class="uk-text-meta">DES 1210-10/ME</p>
+    <p class="uk-text-meta">DES 1210-28</p>
+    <p class="uk-text-meta">DES 1210-10</p>
+    <p class="uk-text-meta">DES 1228/ME</p>
+    <p class="uk-text-meta">ISCOM2128EA-MA</p> -->
+    
+<select id="selectdev"></select>
+<input type="button" class="scroll uk-button uk-button-primary" value="Get free ports" id="getports" onclick="getports()"/>
+
+<div id="ports"></div>
+<p>Empty ports</p>
+<table id ="ports_table">
+</table>
+</div>
+
+<div id="stage1">
+<input id="selected_port" class="uk-input uk-form-width-medium" type="text" placeholder="port">
+<input id="selected_vlan" class="uk-input uk-form-width-medium" type="text" placeholder="vlan_id">
+<button class="scroll uk-button uk-button-primary" onclick="write_access_func()">Write</button>
+<div class="uk-width-large" id="result" style="padding-top: 20px;"></div>
+</div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+    
+                            $("#selectdev").select2({
+                                width: '200px',
+                                placeholder: "...",
+                                maximumSelectionSize: 12,
+                                minimumInputLength: 3,
+                                ajax: {
+                                    url: '/dev_uri_access',
+                                    processResults: function (data) {
+                                        // Tranforms the top-level key of the response object from 'items' to 'results'
+                                        return {results: data};
+                                    },
+                                    cache: true
+                                }
+                            });
+    
+                        </script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="uk-width-4-5">
+        <div class="uk-background-muted  uk-padding">
+
+
+                <h2 id="getstarted">Aliases</h2>
+                
+                    <table   class=" uk-table uk-table-divider">
+                            <thead>
+                                    <tr>
+                                        <th style="text-align: left !important;">URI</th>
+                                        <th style="text-align: left !important;">Alias</th>
+                                    </tr>
+                                </thead>
+                            {% if aliaslist|length != 0 %}
+                            {% for t in aliaslist %}
+                            <tr>
+                                <td><a href="/devtemplate/{{t.name}}"><code>{{t.name}}</code></a></td>
+                                <td>{{t.alias}}</td>
+                            </tr>
+
+
+                            {%endfor%}
+                            {%endif%}
+                            <tr>
+                                    <td><a href="#"><span class="uk-margin-small-right" uk-icon="icon:plus"></span></a></td>
+                                    <td>Create new template</td>
+                            </tr>
+
+                            
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+                
+{% endblock %}

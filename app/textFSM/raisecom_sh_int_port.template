@@ -1,0 +1,7 @@
+Value INTERFACE (\d+)
+Value ADMINSTATUS (enable|disable|enableup)
+Value INTF_STATE (down|\w+M\/\w+)
+
+
+Start
+  ^\s*${INTERFACE}\s+${ADMINSTATUS}\s+\(*${INTF_STATE}\)* -> Record

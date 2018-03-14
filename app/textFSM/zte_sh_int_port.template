@@ -1,0 +1,11 @@
+Value INTERFACE (\d+)
+Value ADMINSTATUS (enabled|disabled)
+Value INTF_STATE (up|down)
+Value INTF_SPEED (\d+Mbps|1Gbps)
+
+Start
+  ^\s+PortId\s+:\s+${INTERFACE}
+  ^\s+PortEnable\s+:\s+${ADMINSTATUS}
+  ^.*Link\s+:\s+${INTF_STATE}
+  ^.+Speed\s+:\s+${INTF_SPEED} -> Record
+
